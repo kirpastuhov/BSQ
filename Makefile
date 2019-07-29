@@ -6,7 +6,7 @@
 #    By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/29 10:26:29 by kpastukh          #+#    #+#              #
-#    Updated: 2019/07/29 10:28:24 by kpastukh         ###   ########.fr        #
+#    Updated: 2019/07/29 15:03:02 by moverton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ OUTPUT = bsq
 
 FLAGS = -Wall -Wextra -Werror
 
-SRC = src/bsq.c
+SRC = src/*.c
 
-OBJECTS =  bsq.o
+OBJECTS =  *.o
 
 HEADERS = includes/*.h
 
