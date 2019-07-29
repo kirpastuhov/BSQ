@@ -1,0 +1,10 @@
+*.swp
+*.smp
+*.svn
+*.swl
+.nfs*
+*.DS_Store
+*.out
+._*
+*.o
+
