@@ -6,13 +6,18 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 10:28:49 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/29 15:40:21 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/30 12:49:05 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BSQ_H
 # define BSQ_H
-# define BUFFER_SIZE 4096
+# define BUFFER_SIZE 1000000000
+
+# define ABS(Value) (((Value) < 0) ? -(Value) : (Value))
+# define MIN(x, y) ((x < y) ? (x) : (y))
+# define MIN3(x, y, z) ((MIN(x, y) < z) ? (MIN(x, y)) : (z))
+
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
