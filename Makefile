@@ -6,7 +6,7 @@
 #    By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/29 10:26:29 by kpastukh          #+#    #+#              #
-#    Updated: 2019/07/29 15:03:02 by moverton         ###   ########.fr        #
+#    Updated: 2019/07/29 21:37:28 by kpastukh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,10 @@ all: $(OUTPUT)
 
 $(OUTPUT): $(SRC) $(HEADERS)
 	gcc $(FLAGS) -I$(HEADERS) -c $(SRC)
+
+noflags:
+	gcc -I$(HEADERS) -c $(SRC)
+	gcc -o $(OUTPUT) $(OBJECTS)
 
 clean:
 	/bin/rm -f *.o
