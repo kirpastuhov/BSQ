@@ -6,34 +6,35 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 16:11:10 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/29 23:54:03 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/30 13:12:29 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/bsq.h"
 #include <stdio.h>
 
-int		main(int argc, char **argv)
+int		main(void)
 {
-	char *test_str = "...................o....................o...o.........o.................";
+	char *test_str = "...............................o..................................o.............................................o.....................................o............................................o..............o.......o.......o................";
 	int test[ft_strlen(test_str)];
 
 	int i = 0;
 	int j = 0;
 	int k = 0;
-	int rows = 6;
+	int rows = 9;
 	int	cols = ft_strlen(test_str) / rows;
 	int diag;
 	int abov;
 	int left;
-	float mod;
+	int	size;
+	int position;
 
 	while (i < rows)
 	{
 		j = 0;
 		while (j < cols)
 		{
-			printf("%c", test_str[k++]);
+			printf("%2c", test_str[k++]);
 			j++;
 		}
 		printf("\n");
@@ -54,9 +55,16 @@ int		main(int argc, char **argv)
 		if (!((i / (j + 1) % cols) == 0) && j != 0)
 			diag = test[i - cols - 1];
 		if (test_str[i] == 'o')
-			test[i] = left + abov - diag + 1;
+			test[i] = 0;
 		else
-			test[i] = left + abov - diag;
+		{
+			test[i] = MIN3(left, abov, diag) + 1;
+			if (test[i] > size)
+			{
+				size = test[i];
+				position = i;
+			}
+		}
 		if ((i / (j + 1) % cols) == 0 && i != 0)
 			j++;
 		i++;
@@ -70,11 +78,12 @@ int		main(int argc, char **argv)
 		j = 0;
 		while (j < cols)
 		{
-			printf("%d", test[k++]);
+			printf("%2d", test[k++]);
 			j++;
 		}
 		printf("\n");
 		i++;
 	}
+	printf("position: %d, size: %d\n", position, size);
 	return (0);
 }
