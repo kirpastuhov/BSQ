@@ -6,11 +6,19 @@
 /*   By: moverton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 12:39:56 by moverton          #+#    #+#             */
-/*   Updated: 2019/07/29 23:56:27 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/30 10:42:50 by kpastukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/bsq.h"
+
+/* TODO reduce lines in ft_read_file from 27 to 25 */
+
+/*
+** ┌────────────────────────────────────────────────┐
+** │              printing errors                   │
+** └────────────────────────────────────────────────┘
+*/
 
 int		ft_error(char *arg, int nbr)
 {
@@ -52,6 +60,12 @@ void	ft_get_input(void)
 	}
 }
 
+/*
+** ┌────────────────────────────────────────────────┐
+** │         read input from file                   │
+** └────────────────────────────────────────────────┘
+*/
+
 char	*ft_read_file(char *filename)
 {
 	int		fd;
@@ -59,7 +73,7 @@ char	*ft_read_file(char *filename)
 	int		out;
 	char	buffer[BUFFER_SIZE + 1];
 	char	*str;
-	
+
 	str = NULL;
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)

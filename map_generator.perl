@@ -1,7 +1,9 @@
 #!/usr/bin/perl
 
-# execution
-# >$ perl map_generator.perl 10 10 5
+## ┌────────────────────────────────────────────────┐
+## │     execution                                  │
+## │     >$ perl map_generator.perl x y d           │
+## └────────────────────────────────────────────────┘
 
 use warnings;
 use strict;
