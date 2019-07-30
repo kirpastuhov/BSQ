@@ -6,7 +6,7 @@
 /*   By: moverton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 12:39:56 by moverton          #+#    #+#             */
-/*   Updated: 2019/07/29 23:56:27 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/30 14:42:54 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,9 @@ char	*ft_read_file(char *filename)
 	if (fd < 0)
 	{
 		ft_error(filename, 1);
-		return (str);
+		return (NULL);
 	}
 	out = read(fd, buffer, BUFFER_SIZE);
-	if (errno == EISDIR)
-	{
-		ft_error(filename, 2);
-		return (str);
-	}
 	buffer[out] = '\0';
 	str = malloc(sizeof(char) * out);
 	i = -1;

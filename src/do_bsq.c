@@ -6,7 +6,7 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 16:11:10 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/30 13:12:29 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/30 14:40:04 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int		main(void)
 {
-	char *test_str = "...............................o..................................o.............................................o.....................................o............................................o..............o.......o.......o................";
+	char test_str[] = "...............................o..................................o.............................................o.....................................o............................................o..............o.......o.......o................";
 	int test[ft_strlen(test_str)];
 
 	int i = 0;
@@ -28,18 +28,20 @@ int		main(void)
 	int left;
 	int	size;
 	int position;
+	int col_counter;
+	int row_counter;
 
-	while (i < rows)
-	{
-		j = 0;
-		while (j < cols)
-		{
-			printf("%2c", test_str[k++]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
+	/* while (i < rows) */
+	/* { */
+	/* 	j = 0; */
+	/* 	while (j < cols) */
+	/* 	{ */
+	/* 		printf("%2c", test_str[k++]); */
+	/* 		j++; */
+	/* 	} */
+	/* 	printf("\n"); */
+	/* 	i++; */
+	/* } */
 
 	i = 0;
 	j = 0;
@@ -73,17 +75,48 @@ int		main(void)
 	i = 0;
 	j = 0;
 	k = 0;
+	/* while (i < rows) */
+	/* { */
+	/* 	j = 0; */
+	/* 	while (j < cols) */
+	/* 	{ */
+	/* 		printf("%2d", test[k++]); */
+	/* 		j++; */
+	/* 	} */
+	/* 	printf("\n"); */
+	/* 	i++; */
+	/* } */
+	col_counter = size;
+	row_counter = size;
+	printf("position: %d, size: %d\n", position, size);
+	while (row_counter > 0)
+	{
+		/* printf("position: %d, rowcount: %d\n", position, row_counter); */
+		while (col_counter > 0)
+		{
+			/* printf("position: %d, colcount: %d\n", position, col_counter); */
+			test_str[position] = 'x';
+			position--;
+			col_counter--;
+		}
+		col_counter = size;
+		row_counter--;
+		position = (position + size) - cols;
+	}
+
+	i = 0;
+	j = 0;
+	k = 0;
 	while (i < rows)
 	{
 		j = 0;
 		while (j < cols)
 		{
-			printf("%2d", test[k++]);
+			printf("%2c", test_str[k++]);
 			j++;
 		}
 		printf("\n");
 		i++;
 	}
-	printf("position: %d, size: %d\n", position, size);
 	return (0);
 }
