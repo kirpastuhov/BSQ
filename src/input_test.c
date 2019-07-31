@@ -6,7 +6,7 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 16:11:10 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/31 12:06:23 by kpastukh         ###   ########.fr       */
+/*   Updated: 2019/07/31 14:32:36 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,14 @@ void	get_config(char *input)
 }
 
 int		main(int argc, char **argv)
-{	
+{
 	char *test_str = ft_read_file(argv[1]);
 	get_config(test_str);
 	int test[ft_strlen(test_str) - g_strt];
 	printf("strlen: %d\n", ft_strlen(test_str));
 	printf("strlen - config: %d\n", ft_strlen(test_str) - g_strt);
 	printf("map_start: %d | space: %c | obstacle: %c | square: %c\n", g_strt, g_spce, g_obst, g_sqre);
+	printf("%s\n",test_str);
 	int i = 0;
 	int j = 0;
 	int k = 0;
@@ -87,6 +88,8 @@ int		main(int argc, char **argv)
 		diag = 0;
 		abov = 0;
 		left = 0;
+		if (test_str[start] == '\n')
+			start++;
 		if (j != 0)
 			abov = test[i - cols];
 		if (!((i / (j + 1) % cols) == 0))
@@ -141,13 +144,14 @@ int		main(int argc, char **argv)
 		}
 		col_counter = size;
 		row_counter--;
-		position = (position + size) - cols;
+		position = (position + size - 1) - cols;
 	}
 
 	i = 0;
 	j = 0;
 	start = g_strt;
 	ft_putstr(test_str, 1);
+	write(1, "\n", 1);
 	/* while (i < rows) */
 	/* { */
 	/* 	j = 0; */
