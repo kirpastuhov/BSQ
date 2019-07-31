@@ -6,13 +6,11 @@
 /*   By: moverton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 12:39:56 by moverton          #+#    #+#             */
-/*   Updated: 2019/07/31 12:10:00 by kpastukh         ###   ########.fr       */
+/*   Updated: 2019/07/31 14:29:36 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/bsq.h"
-
-/* TODO: refactor ft_read_file */
 
 /*
 ** ┌────────────────────────────────────────────────┐
@@ -91,25 +89,11 @@ char	*ft_read_file(char *filename)
 		return (NULL);
 	out = read(fd, buffer, BUFFER_SIZE);
 	buffer[out] = '\0';
-	str = malloc(sizeof(char) * out);
+	str = malloc(sizeof(char) * out + 1);
 	i = -1;
 	j = 0;
 	while (buffer[++i])
-	{
-		if (newline == 0)
-		{
-			if (buffer[i] == '\n')
-				newline++;
-			str[j] = buffer[i];
-		}
-		else
-		{
-			if (buffer[i] == '\n')
-				i++;
-			str[j] = buffer[i];
-		}
-		j++;
-	}
+		str[i] = buffer[i];
 	str[i] = '\0';
 	close(fd);
 	return (str);
