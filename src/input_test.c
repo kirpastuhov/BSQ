@@ -6,7 +6,7 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 16:11:10 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/30 20:50:19 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/30 21:04:19 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int		main(int argc, char **argv)
 	int diag;
 	int abov;
 	int left;
-	int	size;
-	int position;
+	int	size = 0;
+	int position = 0;
 	int col_counter;
 	int row_counter;
 
@@ -98,17 +98,18 @@ int		main(int argc, char **argv)
 		else
 		{
 			test[i] = MIN3(left, abov, diag) + 1;
+			/* printf("test[i]: %d\n", test[i]); */
 			if (test[i] > size)
 			{
 				size = test[i];
-				position = i;
+				position = start;
 			}
 		}
 		if ((i / (j + 1) % cols) == 0 && i != 0)
 			j++;
 		i++;
 		start++;
-		/* printf("size: %d | position: %d", size, position); */
+		/* printf("size: %d | position: %d\n", size, position); */
 	}
 
 	i = 0;
@@ -125,23 +126,23 @@ int		main(int argc, char **argv)
 		printf("\n");
 		i++;
 	}
-	/* col_counter = size; */
-	/* row_counter = size; */
-	/* printf("position: %d, size: %d\n", position, size); */
-	/* while (row_counter > 0) */
-	/* { */
-	/* 	/1* printf("position: %d, rowcount: %d\n", position, row_counter); *1/ */
-	/* 	while (col_counter > 0) */
-	/* 	{ */
-	/* 		/1* printf("position: %d, colcount: %d\n", position, col_counter); *1/ */
-	/* 		test_str[position] = 'x'; */
-	/* 		position--; */
-	/* 		col_counter--; */
-	/* 	} */
-	/* 	col_counter = size; */
-	/* 	row_counter--; */
-	/* 	position = (position + size) - cols; */
-	/* } */
+	col_counter = size;
+	row_counter = size;
+	printf("position: %d, size: %d\n", position, size);
+	while (row_counter > 0)
+	{
+		/* printf("position: %d, rowcount: %d\n", position, row_counter); */
+		while (col_counter > 0)
+		{
+			/* printf("position: %d, colcount: %d\n", position, col_counter); */
+			test_str[position] = 'x';
+			position--;
+			col_counter--;
+		}
+		col_counter = size;
+		row_counter--;
+		position = (position + size) - cols;
+	}
 
 	i = 0;
 	j = 0;
