@@ -6,7 +6,7 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 16:11:10 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/30 21:04:19 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/30 21:26:03 by kpastukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,17 @@ int		main(int argc, char **argv)
 	int col_counter;
 	int row_counter;
 
-	while (i < rows)
-	{
-		j = 0;
-		while (j < cols)
-		{
-			printf("%2c", test_str[start++]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
+	/* while (i < rows) */
+	/* { */
+	/* 	j = 0; */
+	/* 	while (j < cols) */
+	/* 	{ */
+	/* 		printf("%2c", test_str[start++]); */
+	/* 		j++; */
+	/* 	} */
+	/* 	printf("\n"); */
+	/* 	i++; */
+	/* } */
 
 	i = 0;
 	j = 0;
@@ -115,17 +115,17 @@ int		main(int argc, char **argv)
 	i = 0;
 	j = 0;
 	k = 0;
-	while (i < rows)
-	{
-		j = 0;
-		while (j < cols)
-		{
-			printf("%2d", test[k++]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
+	/* while (i < rows) */
+	/* { */
+	/* 	j = 0; */
+	/* 	while (j < cols) */
+	/* 	{ */
+	/* 		printf("%2d", test[k++]); */
+	/* 		j++; */
+	/* 	} */
+	/* 	printf("\n"); */
+	/* 	i++; */
+	/* } */
 	col_counter = size;
 	row_counter = size;
 	printf("position: %d, size: %d\n", position, size);
@@ -147,16 +147,18 @@ int		main(int argc, char **argv)
 	i = 0;
 	j = 0;
 	start = g_strt;
-	while (i < rows)
-	{
-		j = 0;
-		while (j < cols)
-		{
-			printf("%2c", test_str[start++]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
+	ft_putstr(test_str, 1);
+	/* while (i < rows) */
+	/* { */
+	/* 	j = 0; */
+	/* 	while (j < cols) */
+	/* 	{ */
+	/* 		ft_putstr(test_str, 1); */
+	/* 		/1* printf("%2c", test_str[start++]); *1/ */
+	/* 		j++; */
+	/* 	} */
+	/* 	printf("\n"); */
+	/* 	i++; */
+	/* } */
 	return (0);
 }
