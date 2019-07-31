@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moverton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 12:39:56 by moverton          #+#    #+#             */
-/*   Updated: 2019/07/30 20:29:06 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/31 12:10:00 by kpastukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/bsq.h"
 
-/* TODO reduce lines in ft_read_file from 27 to 25 */
+/* TODO: refactor ft_read_file */
 
 /*
 ** ┌────────────────────────────────────────────────┐
@@ -29,13 +29,11 @@ int		ft_error(int nbr)
 	if (nbr == 1)
 	{
 		ft_putstr("ft_cat: ", 2);
-		/* ft_putstr(arg, 2); */
 		ft_putstr(": No such file or directory\n", 2);
 	}
 	if (nbr == 2)
 	{
 		ft_putstr("ft_cat: ", 2);
-		/* ft_putstr(arg, 2); */
 		ft_putstr(": Is a directory\n", 2);
 	}
 	return (1);

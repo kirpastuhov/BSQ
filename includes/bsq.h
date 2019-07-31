@@ -6,13 +6,13 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 10:28:49 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/30 21:27:42 by kpastukh         ###   ########.fr       */
+/*   Updated: 2019/07/30 21:34:05 by kpastukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BSQ_H
 # define BSQ_H
-# define BUFFER_SIZE 9000000
+# define BUFFER_SIZE 1000000
 
 # define ABS(Value) (((Value) < 0) ? -(Value) : (Value))
 # define MIN(x, y) ((x < y) ? (x) : (y))
