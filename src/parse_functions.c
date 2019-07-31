@@ -6,7 +6,7 @@
 /*   By: moverton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 12:39:56 by moverton          #+#    #+#             */
-/*   Updated: 2019/07/30 19:34:33 by kpastukh         ###   ########.fr       */
+/*   Updated: 2019/07/30 20:29:06 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,13 @@ char	*ft_read_file(char *filename)
 {
 	int		fd;
 	int		i;
+	int		j;
 	int		out;
 	char	buffer[BUFFER_SIZE + 1];
 	char	*str;
+	int		newline;
 
+	newline = 0;
 	str = NULL;
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
@@ -92,8 +95,23 @@ char	*ft_read_file(char *filename)
 	buffer[out] = '\0';
 	str = malloc(sizeof(char) * out);
 	i = -1;
+	j = 0;
 	while (buffer[++i])
-		str[i] = buffer[i];
+	{
+		if (newline == 0)
+		{
+			if (buffer[i] == '\n')
+				newline++;
+			str[j] = buffer[i];
+		}
+		else
+		{
+			if (buffer[i] == '\n')
+				i++;
+			str[j] = buffer[i];
+		}
+		j++;
+	}
 	str[i] = '\0';
 	close(fd);
 	return (str);
