@@ -6,23 +6,27 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 16:11:10 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/30 14:40:04 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/30 20:19:10 by kpastukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/bsq.h"
-#include <stdio.h>
 
 int		main(void)
 {
-	char test_str[] = "...............................o..................................o.............................................o.....................................o............................................o..............o.......o.......o................";
-	int test[ft_strlen(test_str)];
+	char 	test_str[] = "...............................o..................................o.............................................o.....................................o............................................o..............o.......o.......o................";
 
-	int i = 0;
-	int j = 0;
-	int k = 0;
-	int rows = 9;
-	int	cols = ft_strlen(test_str) / rows;
+	int 	test[ft_strlen(test_str)];
+	int 	i = 0;
+	int 	j = 0;
+	int 	k = 0;
+	int		rows = 9;
+	int 	len = ft_strlen_check(test_str, '.', 'o', rows);
+	int		cols = len / rows;
+	if (len == -1)
+		ft_error(len);
+	else
+		printf("valid map");
 	int diag;
 	int abov;
 	int left;
@@ -31,17 +35,17 @@ int		main(void)
 	int col_counter;
 	int row_counter;
 
-	/* while (i < rows) */
-	/* { */
-	/* 	j = 0; */
-	/* 	while (j < cols) */
-	/* 	{ */
-	/* 		printf("%2c", test_str[k++]); */
-	/* 		j++; */
-	/* 	} */
-	/* 	printf("\n"); */
-	/* 	i++; */
-	/* } */
+	while (i < rows)
+	{
+		j = 0;
+		while (j < cols)
+		{
+			printf("%c", test_str[k++]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
 
 	i = 0;
 	j = 0;
@@ -75,17 +79,17 @@ int		main(void)
 	i = 0;
 	j = 0;
 	k = 0;
-	/* while (i < rows) */
-	/* { */
-	/* 	j = 0; */
-	/* 	while (j < cols) */
-	/* 	{ */
-	/* 		printf("%2d", test[k++]); */
-	/* 		j++; */
-	/* 	} */
-	/* 	printf("\n"); */
-	/* 	i++; */
-	/* } */
+	while (i < rows)
+	{
+		j = 0;
+		while (j < cols)
+		{
+			printf("%d", test[k++]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
 	col_counter = size;
 	row_counter = size;
 	printf("position: %d, size: %d\n", position, size);
@@ -112,7 +116,7 @@ int		main(void)
 		j = 0;
 		while (j < cols)
 		{
-			printf("%2c", test_str[k++]);
+			printf("%c", test_str[k++]);
 			j++;
 		}
 		printf("\n");

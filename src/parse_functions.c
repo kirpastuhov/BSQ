@@ -6,7 +6,7 @@
 /*   By: moverton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 12:39:56 by moverton          #+#    #+#             */
-/*   Updated: 2019/07/30 14:42:54 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/30 19:34:33 by kpastukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,32 @@
 ** └────────────────────────────────────────────────┘
 */
 
-int		ft_error(char *arg, int nbr)
+int		ft_error(int nbr)
 {
+	if (nbr == -1)
+	{
+		ft_putstr("map error\n", 2);
+	}
 	if (nbr == 1)
 	{
 		ft_putstr("ft_cat: ", 2);
-		ft_putstr(arg, 2);
+		/* ft_putstr(arg, 2); */
 		ft_putstr(": No such file or directory\n", 2);
 	}
 	if (nbr == 2)
 	{
 		ft_putstr("ft_cat: ", 2);
-		ft_putstr(arg, 2);
+		/* ft_putstr(arg, 2); */
 		ft_putstr(": Is a directory\n", 2);
 	}
 	return (1);
 }
+
+/*
+** ┌────────────────────────────────────────────────┐
+** │           for handling errors                  │
+** └────────────────────────────────────────────────┘
+*/
 
 int		ft_getchar(char c)
 {
@@ -77,10 +87,7 @@ char	*ft_read_file(char *filename)
 	str = NULL;
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-	{
-		ft_error(filename, 1);
 		return (NULL);
-	}
 	out = read(fd, buffer, BUFFER_SIZE);
 	buffer[out] = '\0';
 	str = malloc(sizeof(char) * out);

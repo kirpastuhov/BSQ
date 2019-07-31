@@ -6,16 +6,52 @@
 /*   By: moverton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 12:28:38 by moverton          #+#    #+#             */
-/*   Updated: 2019/07/29 13:27:51 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/30 19:12:40 by kpastukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/bsq.h"
 
+/*
+** ┌────────────────────────────────────────────────┐
+** │     write single character to stdout           │
+** └────────────────────────────────────────────────┘
+*/
+
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
+
+/*
+** ┌────────────────────────────────────────────────┐
+** │     measure the length and check characters    │
+** └────────────────────────────────────────────────┘
+*/
+
+int		ft_strlen_check(char *str, char space, char obs, int rows)
+{
+	int counter;
+
+	counter = 0;
+	while (*str)
+	{
+		if (!(*str == space || *str == obs))
+			return (-1);
+		str++;
+		counter++;
+	}
+	if (counter % rows != 0)
+		return (-1);
+	else
+		return (counter);
+}
+
+/*
+** ┌────────────────────────────────────────────────┐
+** │            measure the length                  │
+** └────────────────────────────────────────────────┘
+*/
 
 int		ft_strlen(char *str)
 {
@@ -30,6 +66,12 @@ int		ft_strlen(char *str)
 	return (counter);
 }
 
+/*
+** ┌────────────────────────────────────────────────┐
+** │     print string to given output stream        │
+** └────────────────────────────────────────────────┘
+*/
+
 void	ft_putstr(char *str, int output)
 {
 	if (output == 1)
@@ -37,6 +79,12 @@ void	ft_putstr(char *str, int output)
 	else
 		write(2, str, ft_strlen(str));
 }
+
+/*
+** ┌────────────────────────────────────────────────┐
+** │     print number to standart output            │
+** └────────────────────────────────────────────────┘
+*/
 
 void	ft_putnbr(int nb)
 {
@@ -54,6 +102,12 @@ void	ft_putnbr(int nb)
 		ft_putnbr(nb / 10);
 	ft_putchar((nb % 10) + '0');
 }
+
+/*
+** ┌────────────────────────────────────────────────┐
+** │     compare strings by ascii values            │
+** └────────────────────────────────────────────────┘
+*/
 
 int		ft_strcmp(char *s1, char *s2)
 {
