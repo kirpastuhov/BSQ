@@ -6,7 +6,7 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 16:11:10 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/31 21:09:59 by kpastukh         ###   ########.fr       */
+/*   Updated: 2019/07/31 21:31:34 by kpastukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,23 @@ void	get_config(char *input)
 int		main(int argc, char **argv)
 {
 	int		cols;
-	char	*test_str;
+	char	*str;
+	int		counter;
 
-	test_str = ft_read_file(argv[1]);
-	get_config(test_str);
-	ft_zero_vars2(&g_i, &g_j);
-	cols = (ft_strlen(test_str) - g_strt - g_rows) / g_rows;
-	ft_zero_vars2(&g_size, &g_posn);
-	ft_fill_intarr(test_str, g_strt - 1, cols);
-	ft_fill_spaces(test_str, g_size, g_size, cols);
-	ft_putstr(test_str, 1);
-	write(1, "\n", 1);
+	counter = 0;
+	while (++counter < argc)
+	{
+		str = ft_read_file(argv[counter]);
+		get_config(str);
+		ft_zero_vars2(&g_i, &g_j);
+		cols = (ft_strlen(str) - g_strt - g_rows) / g_rows;
+		ft_zero_vars2(&g_size, &g_posn);
+		ft_fill_intarr(str, g_strt - 1, cols);
+		ft_fill_spaces(str, g_size, g_size, cols);
+		ft_putstr(str + g_strt, 1);
+		if (!(counter + 1 == argc))
+			write(1, "\n", 1);
+	}
 	return (0);
 }
 
