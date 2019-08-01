@@ -6,7 +6,7 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 16:11:10 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/31 21:31:34 by kpastukh         ###   ########.fr       */
+/*   Updated: 2019/07/31 22:08:04 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		g_strt;
 int		g_rows;
+int		g_cols;
 char	g_spce;
 char	g_obst;
 char	g_sqre;
@@ -50,25 +51,37 @@ void	get_config(char *input)
 
 int		main(int argc, char **argv)
 {
-	int		cols;
 	char	*str;
 	int		counter;
 
 	counter = 0;
-	while (++counter < argc)
+	if (argc == 1)
+	{	
+		str = ft_get_input();
+		solve_map(str);
+	}
+	else
 	{
-		str = ft_read_file(argv[counter]);
-		get_config(str);
-		ft_zero_vars2(&g_i, &g_j);
-		cols = (ft_strlen(str) - g_strt - g_rows) / g_rows;
-		ft_zero_vars2(&g_size, &g_posn);
-		ft_fill_intarr(str, g_strt - 1, cols);
-		ft_fill_spaces(str, g_size, g_size, cols);
-		ft_putstr(str + g_strt, 1);
-		if (!(counter + 1 == argc))
-			write(1, "\n", 1);
+		while (++counter < argc)
+		{
+			str = ft_read_file(argv[counter]);
+			solve_map(str);
+			if (!(counter + 1 == argc))
+				write(1, "\n", 1);
+		}
 	}
 	return (0);
+}
+
+void	solve_map(char *str)
+{	
+	get_config(str);
+	ft_zero_vars2(&g_i, &g_j);
+	g_cols = (ft_strlen(str) - g_strt - g_rows) / g_rows;
+	ft_zero_vars2(&g_size, &g_posn);
+	ft_fill_intarr(str, g_strt - 1, g_cols);
+	ft_fill_spaces(str, g_size, g_size, g_cols);
+	ft_putstr(str + g_strt, 1);
 }
 
 /*
