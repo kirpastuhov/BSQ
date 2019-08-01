@@ -6,7 +6,7 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 10:28:49 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/31 21:00:34 by kpastukh         ###   ########.fr       */
+/*   Updated: 2019/07/31 22:06:17 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@ int		ft_strcmp(char *s1, char *s2);
 int		ft_validate(char *str, int rows, int cols);
 int		ft_error(int nbr);
 int		ft_getchar(char c);
-void	ft_get_input(void);
+char	*ft_get_input(void);
 char	*ft_read_file(char *filename);
+
 void	ft_zero_vars2(int *i, int *j);
 void	ft_zero_vars3(int *i, int *j, int *k);
 void	ft_fill_spaces(char *str, int col_counter, int row_counter, int cols);
 void	ft_fill_intarr(char *str, int start, int cols);
+void	solve_map(char *str);
 
 int		ft_atoi(char *str);
 

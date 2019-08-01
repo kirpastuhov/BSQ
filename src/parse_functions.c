@@ -6,7 +6,7 @@
 /*   By: moverton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 12:39:56 by moverton          #+#    #+#             */
-/*   Updated: 2019/07/31 18:53:25 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/31 21:54:57 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,23 @@ int		ft_getchar(char c)
 	return (-1);
 }
 
-void	ft_get_input(void)
+char	*ft_get_input(void)
 {
-	int		flag;
+	int		i;
+	int		j;
 	int		out;
 	char	buffer[BUFFER_SIZE + 1];
+	char	*str;
 
-	flag = 0;
-	while (flag != -1)
-	{
-		out = read(0, buffer, 1);
-		buffer[out] = '\0';
-		ft_putstr(buffer, 1);
-		flag = ft_getchar(buffer[0]);
-	}
+	out = read(0, buffer, BUFFER_SIZE);
+	buffer[out] = '\0';
+	str = malloc(sizeof(char) * out + 1);
+	i = -1;
+	j = 0;
+	while (buffer[++i])
+		str[i] = buffer[i];
+	str[i] = '\0';
+	return (str);
 }
 
 /*
@@ -80,9 +83,7 @@ char	*ft_read_file(char *filename)
 	int		out;
 	char	buffer[BUFFER_SIZE + 1];
 	char	*str;
-	int		newline;
 
-	newline = 0;
 	str = NULL;
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
