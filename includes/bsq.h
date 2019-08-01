@@ -12,7 +12,7 @@
 
 #ifndef BSQ_H
 # define BSQ_H
-# define BUFFER_SIZE 1000000
+# define BUFFER_SIZE 131072
 
 # define ABS(Value) (((Value) < 0) ? -(Value) : (Value))
 # define MIN(x, y) ((x < y) ? (x) : (y))
