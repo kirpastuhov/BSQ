@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moverton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/bsq.h"
-
-/* TODO reduce lines in ft_read_file from 27 to 25 */
 
 /*
 ** ┌────────────────────────────────────────────────┐
@@ -29,13 +27,11 @@ int		ft_error(int nbr)
 	if (nbr == 1)
 	{
 		ft_putstr("ft_cat: ", 2);
-		/* ft_putstr(arg, 2); */
 		ft_putstr(": No such file or directory\n", 2);
 	}
 	if (nbr == 2)
 	{
 		ft_putstr("ft_cat: ", 2);
-		/* ft_putstr(arg, 2); */
 		ft_putstr(": Is a directory\n", 2);
 	}
 	return (1);
@@ -93,13 +89,11 @@ char	*ft_read_file(char *filename)
 		return (NULL);
 	out = read(fd, buffer, BUFFER_SIZE);
 	buffer[out] = '\0';
-	str = malloc(sizeof(char) * out);
+	str = malloc(sizeof(char) * out + 1);
 	i = -1;
 	j = 0;
 	while (buffer[++i])
-	{
 		str[i] = buffer[i];
-	}
 	str[i] = '\0';
 	close(fd);
 	return (str);

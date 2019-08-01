@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_bsq.c                                           :+:      :+:    :+:   */
+/*   input_test.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -45,7 +45,7 @@ void	get_config(char *input)
 }
 
 int		main(int argc, char **argv)
-{	
+{
 	char *test_str = ft_read_file(argv[1]);
 	get_config(test_str);
 	int test[ft_strlen(test_str) - g_strt - g_rows];
@@ -53,7 +53,6 @@ int		main(int argc, char **argv)
 	printf("strlen: %d\n", ft_strlen(test_str));
 	printf("strlen - config: %d\n", ft_strlen(test_str) - g_strt);
 	printf("map_start: %d | space: %c | obstacle: %c | square: %c\n", g_strt, g_spce, g_obst, g_sqre);
-	
 	int i = 0;
 	int j = 0;
 	int k = 0;
@@ -121,7 +120,7 @@ int		main(int argc, char **argv)
 	/* 	printf("\n"); */
 	/* 	i++; */
 	/* } */
-	
+
 	col_counter = size;
 	row_counter = size;
 	printf("position: %d, size: %d\n", position, size);
@@ -142,5 +141,6 @@ int		main(int argc, char **argv)
 
 	ft_putstr(test_str, 1);
 	write(1, "\n", 1);
+  
 	return (0);
 }
