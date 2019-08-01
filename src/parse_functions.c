@@ -6,11 +6,14 @@
 /*   By: moverton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 12:39:56 by moverton          #+#    #+#             */
-/*   Updated: 2019/07/31 21:54:57 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/31 23:22:13 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/bsq.h"
+
+int g_i;
+int g_j;
 
 /*
 ** ┌────────────────────────────────────────────────┐
@@ -23,16 +26,6 @@ int		ft_error(int nbr)
 	if (nbr == -1)
 	{
 		ft_putstr("map error\n", 2);
-	}
-	if (nbr == 1)
-	{
-		ft_putstr("ft_cat: ", 2);
-		ft_putstr(": No such file or directory\n", 2);
-	}
-	if (nbr == 2)
-	{
-		ft_putstr("ft_cat: ", 2);
-		ft_putstr(": Is a directory\n", 2);
 	}
 	return (1);
 }
@@ -78,8 +71,6 @@ char	*ft_get_input(void)
 char	*ft_read_file(char *filename)
 {
 	int		fd;
-	int		i;
-	int		j;
 	int		out;
 	char	buffer[BUFFER_SIZE + 1];
 	char	*str;
@@ -91,11 +82,11 @@ char	*ft_read_file(char *filename)
 	out = read(fd, buffer, BUFFER_SIZE);
 	buffer[out] = '\0';
 	str = malloc(sizeof(char) * out + 1);
-	i = -1;
-	j = 0;
-	while (buffer[++i])
-		str[i] = buffer[i];
-	str[i] = '\0';
+	g_i = -1;
+	g_j = 0;
+	while (buffer[++g_i])
+		str[g_i] = buffer[g_i];
+	str[g_i] = '\0';
 	close(fd);
 	return (str);
 }

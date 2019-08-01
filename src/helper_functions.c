@@ -6,7 +6,7 @@
 /*   By: moverton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 18:11:46 by moverton          #+#    #+#             */
-/*   Updated: 2019/07/31 20:44:15 by kpastukh         ###   ########.fr       */
+/*   Updated: 2019/07/31 23:21:00 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_putchar(char c)
 ** └────────────────────────────────────────────────┘
 */
 
-void 	ft_zero_vars3(int *i, int *j, int *k)
+void	ft_zero_vars3(int *i, int *j, int *k)
 {
 	*i = 0;
 	*j = 0;
@@ -42,7 +42,7 @@ void 	ft_zero_vars3(int *i, int *j, int *k)
 ** └────────────────────────────────────────────────┘
 */
 
-void 	ft_zero_vars2(int *i, int *j)
+void	ft_zero_vars2(int *i, int *j)
 {
 	*i = 0;
 	*j = 0;

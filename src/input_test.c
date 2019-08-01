@@ -6,7 +6,7 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 16:11:10 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/31 22:08:04 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/31 23:23:00 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		main(int argc, char **argv)
 
 	counter = 0;
 	if (argc == 1)
-	{	
+	{
 		str = ft_get_input();
 		solve_map(str);
 	}
@@ -73,15 +73,21 @@ int		main(int argc, char **argv)
 	return (0);
 }
 
-void	solve_map(char *str)
-{	
+int		solve_map(char *str)
+{
+	int len;
+
 	get_config(str);
+	len = ft_strlen_check(str + g_strt, g_spce, g_obst);
+	if (len <= 0)
+		return (ft_error(-1));
 	ft_zero_vars2(&g_i, &g_j);
-	g_cols = (ft_strlen(str) - g_strt - g_rows) / g_rows;
+	g_cols = (len - g_rows) / g_rows;
 	ft_zero_vars2(&g_size, &g_posn);
 	ft_fill_intarr(str, g_strt - 1, g_cols);
 	ft_fill_spaces(str, g_size, g_size, g_cols);
 	ft_putstr(str + g_strt, 1);
+	return (0);
 }
 
 /*
