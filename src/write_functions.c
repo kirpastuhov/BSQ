@@ -6,11 +6,13 @@
 /*   By: moverton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 12:28:38 by moverton          #+#    #+#             */
-/*   Updated: 2019/07/31 12:08:09 by kpastukh         ###   ########.fr       */
+/*   Updated: 2019/07/31 23:14:26 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/bsq.h"
+
+extern int g_strt;
 
 /*
 ** ┌────────────────────────────────────────────────┐
@@ -18,22 +20,19 @@
 ** └────────────────────────────────────────────────┘
 */
 
-int		ft_strlen_check(char *str, char space, char obs, int rows)
+int		ft_strlen_check(char *str, char space, char obs)
 {
 	int counter;
 
 	counter = 0;
 	while (*str)
 	{
-		if (!(*str == space || *str == obs))
+		if (!(*str == space || *str == obs || *str == '\n'))
 			return (-1);
 		str++;
 		counter++;
 	}
-	if (counter % rows != 0)
-		return (-1);
-	else
-		return (counter);
+	return (counter);
 }
 
 /*

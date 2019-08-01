@@ -6,13 +6,13 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 10:28:49 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/31 22:06:17 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/31 23:16:32 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BSQ_H
 # define BSQ_H
-# define BUFFER_SIZE 131072
+# define BUFFER_SIZE 1310720
 
 # define ABS(Value) (((Value) < 0) ? -(Value) : (Value))
 # define MIN(x, y) ((x < y) ? (x) : (y))
@@ -27,7 +27,7 @@
 void	ft_putchar(char c);
 void	ft_putstr(char *str, int output);
 void	ft_putnbr(int nb);
-int		ft_strlen_check(char *str, char space, char obs, int rows);
+int		ft_strlen_check(char *str, char space, char obs);
 int		ft_strlen(char *str);
 int		ft_strcmp(char *s1, char *s2);
 
@@ -41,7 +41,7 @@ void	ft_zero_vars2(int *i, int *j);
 void	ft_zero_vars3(int *i, int *j, int *k);
 void	ft_fill_spaces(char *str, int col_counter, int row_counter, int cols);
 void	ft_fill_intarr(char *str, int start, int cols);
-void	solve_map(char *str);
+int		solve_map(char *str);
 
 int		ft_atoi(char *str);
 
