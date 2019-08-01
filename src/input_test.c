@@ -6,7 +6,7 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 16:11:10 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/31 20:42:58 by kpastukh         ###   ########.fr       */
+/*   Updated: 2019/07/31 21:08:32 by kpastukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		g_size;
 int		g_posn;
 int		g_abov;
 int		g_left;
-int 	g_diag;
+int		g_diag;
 int		g_i;
 int		g_j;
 
@@ -29,15 +29,14 @@ void	get_config(char *input)
 {
 	char *rows;
 
-	g_i = 0;
-	g_j = 0;
+	ft_zero_vars2(&g_i, &g_j);
 	while (input[g_i] != '\n')
 		g_i++;
 	g_strt = g_i + 1;
 	g_sqre = input[g_i - 1];
 	g_obst = input[g_i - 2];
 	g_spce = input[g_i - 3];
-	g_i = g_i - 4;	
+	g_i = g_i - 4;
 	rows = malloc(g_i + 1);
 	while (g_j <= g_i)
 	{
@@ -51,55 +50,41 @@ void	get_config(char *input)
 
 int		main(int argc, char **argv)
 {
-	char *test_str = ft_read_file(argv[1]);
+	int		cols;
+	char	*test_str;
+
+	test_str = ft_read_file(argv[1]);
 	get_config(test_str);
-	int test[ft_strlen(test_str) - g_strt - g_rows];
-
-	printf("strlen: %d\n", ft_strlen(test_str));
-	printf("strlen - config: %d\n", ft_strlen(test_str) - g_strt);
-	printf("map_start: %d | space: %c | obstacle: %c | square: %c\n", g_strt, g_spce, g_obst, g_sqre);
-	g_i = 0;
-	g_j = 0;
-	int start = g_strt;
-	int rows = g_rows;
-	int	cols = (ft_strlen(test_str) - g_strt - g_rows) / rows;
-	printf("rows: %d | cols: %d\n", rows, cols);
-	g_size = 0;
-	g_posn = 0;
-	int col_counter;
-	int row_counter;
-
-	ft_putstr(test_str, 1);
-	write(1, "\n", 1);
-
-	g_i = 0;
-	g_j = 0;
-	start = g_strt;
-	ft_fill_intarr(test_str, test, g_strt, cols);
-
-	col_counter = g_size;
-	row_counter = g_size;
-	printf("g_posn: %d, g_size: %d\n", g_posn, g_size);
+	ft_zero_vars2(&g_i, &g_j);
+	cols = (ft_strlen(test_str) - g_strt - g_rows) / g_rows;
+	ft_zero_vars2(&g_size, &g_posn);
+	ft_fill_intarr(test_str, g_strt - 1, cols);
 	ft_fill_spaces(test_str, g_size, g_size, cols);
 	ft_putstr(test_str, 1);
 	write(1, "\n", 1);
 	return (0);
 }
 
-void	ft_fill_intarr(char *str, int arr[], int start, int cols)
+/*
+** ┌────────────────────────────────────────────────┐
+** │       fill in int array for algo               │
+** └────────────────────────────────────────────────┘
+*/
+
+void	ft_fill_intarr(char *str, int start, int cols)
 {
-	while (str[start])
+	int arr[ft_strlen(str) - g_strt - g_rows];
+
+	while (str[++start])
 	{
 		ft_zero_vars3(&g_abov, &g_diag, &g_left);
-		if (str[start] == '\n')
-			start++;
-		if (g_j != 0)
-			g_abov = arr[g_i - cols];
+		(str[start] == '\n') ? start++ : start;
+		(g_j != 0) ? (g_abov = arr[g_i - cols]) : (g_abov);
 		if (!((g_i / (g_j + 1) % cols) == 0))
 			g_left = arr[g_i - 1];
 		if (!((g_i / (g_j + 1) % cols) == 0) && g_j != 0)
 			g_diag = arr[g_i - cols - 1];
-		if (str[start] == 'o')
+		if (str[start] == g_obst)
 			arr[g_i] = 0;
 		else
 		{
@@ -110,13 +95,16 @@ void	ft_fill_intarr(char *str, int arr[], int start, int cols)
 				g_posn = start;
 			}
 		}
-		if ((g_i / (g_j + 1) % cols) == 0 && g_i != 0)
-			g_j++;
+		((g_i / (g_j + 1) % cols) == 0 && g_i != 0) ? g_j++ : g_j;
 		g_i++;
-		start++;
 	}
 }
 
+/*
+** ┌────────────────────────────────────────────────┐
+** │       mark biggest square on the map           │
+** └────────────────────────────────────────────────┘
+*/
 
 void	ft_fill_spaces(char *str, int col_counter, int row_counter, int cols)
 {
@@ -124,7 +112,7 @@ void	ft_fill_spaces(char *str, int col_counter, int row_counter, int cols)
 	{
 		while (col_counter > 0)
 		{
-			str[g_posn] = 'x';
+			str[g_posn] = g_sqre;
 			g_posn--;
 			col_counter--;
 		}
@@ -133,5 +121,3 @@ void	ft_fill_spaces(char *str, int col_counter, int row_counter, int cols)
 		g_posn = (g_posn + g_size - 1) - cols;
 	}
 }
-
-
