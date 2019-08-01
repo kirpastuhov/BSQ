@@ -6,7 +6,7 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 16:11:10 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/31 23:23:00 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/31 23:41:25 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,17 @@ int		solve_map(char *str)
 	len = ft_strlen_check(str + g_strt, g_spce, g_obst);
 	if (len <= 0)
 		return (ft_error(-1));
-	ft_zero_vars2(&g_i, &g_j);
-	g_cols = (len - g_rows) / g_rows;
-	ft_zero_vars2(&g_size, &g_posn);
-	ft_fill_intarr(str, g_strt - 1, g_cols);
-	ft_fill_spaces(str, g_size, g_size, g_cols);
-	ft_putstr(str + g_strt, 1);
+	if ((len - g_rows) == 1 && (str + g_strt)[0] == g_obst)
+		ft_putstr(str + g_strt, 1);
+	else
+	{
+		ft_zero_vars2(&g_i, &g_j);
+		g_cols = (len - g_rows) / g_rows;
+		ft_zero_vars2(&g_size, &g_posn);
+		ft_fill_intarr(str, g_strt - 1, g_cols);
+		ft_fill_spaces(str, g_size, g_size, g_cols);
+		ft_putstr(str + g_strt, 1);
+	}
 	return (0);
 }
 
