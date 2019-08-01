@@ -6,7 +6,7 @@
 /*   By: moverton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 12:39:56 by moverton          #+#    #+#             */
-/*   Updated: 2019/07/30 20:29:06 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/31 18:53:25 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,19 +98,7 @@ char	*ft_read_file(char *filename)
 	j = 0;
 	while (buffer[++i])
 	{
-		if (newline == 0)
-		{
-			if (buffer[i] == '\n')
-				newline++;
-			str[j] = buffer[i];
-		}
-		else
-		{
-			if (buffer[i] == '\n')
-				i++;
-			str[j] = buffer[i];
-		}
-		j++;
+		str[i] = buffer[i];
 	}
 	str[i] = '\0';
 	close(fd);

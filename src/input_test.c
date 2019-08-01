@@ -6,7 +6,7 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 16:11:10 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/30 21:04:19 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/31 19:07:09 by moverton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,18 @@ int		main(int argc, char **argv)
 {	
 	char *test_str = ft_read_file(argv[1]);
 	get_config(test_str);
-	int test[ft_strlen(test_str) - g_strt];
+	int test[ft_strlen(test_str) - g_strt - g_rows];
+
 	printf("strlen: %d\n", ft_strlen(test_str));
 	printf("strlen - config: %d\n", ft_strlen(test_str) - g_strt);
 	printf("map_start: %d | space: %c | obstacle: %c | square: %c\n", g_strt, g_spce, g_obst, g_sqre);
+	
 	int i = 0;
 	int j = 0;
 	int k = 0;
 	int start = g_strt;
 	int rows = g_rows;
-	int	cols = (ft_strlen(test_str) - g_strt) / rows;
+	int	cols = (ft_strlen(test_str) - g_strt - g_rows) / rows;
 	printf("rows: %d | cols: %d\n", rows, cols);
 	int diag;
 	int abov;
@@ -67,17 +69,8 @@ int		main(int argc, char **argv)
 	int col_counter;
 	int row_counter;
 
-	while (i < rows)
-	{
-		j = 0;
-		while (j < cols)
-		{
-			printf("%2c", test_str[start++]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
+	ft_putstr(test_str, 1);
+	write(1, "\n", 1);
 
 	i = 0;
 	j = 0;
@@ -87,6 +80,8 @@ int		main(int argc, char **argv)
 		diag = 0;
 		abov = 0;
 		left = 0;
+		if (test_str[start] == '\n')
+			start++;
 		if (j != 0)
 			abov = test[i - cols];
 		if (!((i / (j + 1) % cols) == 0))
@@ -112,20 +107,21 @@ int		main(int argc, char **argv)
 		/* printf("size: %d | position: %d\n", size, position); */
 	}
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (i < rows)
-	{
-		j = 0;
-		while (j < cols)
-		{
-			printf("%2d", test[k++]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
+	/* i = 0; */
+	/* j = 0; */
+	/* k = 0; */
+	/* while (i < rows) */
+	/* { */
+	/* 	j = 0; */
+	/* 	while (j < cols) */
+	/* 	{ */
+	/* 		printf("%d", test[k++]); */
+	/* 		j++; */
+	/* 	} */
+	/* 	printf("\n"); */
+	/* 	i++; */
+	/* } */
+	
 	col_counter = size;
 	row_counter = size;
 	printf("position: %d, size: %d\n", position, size);
@@ -141,22 +137,10 @@ int		main(int argc, char **argv)
 		}
 		col_counter = size;
 		row_counter--;
-		position = (position + size) - cols;
+		position = (position + size - 1) - cols;
 	}
 
-	i = 0;
-	j = 0;
-	start = g_strt;
-	while (i < rows)
-	{
-		j = 0;
-		while (j < cols)
-		{
-			printf("%2c", test_str[start++]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
+	ft_putstr(test_str, 1);
+	write(1, "\n", 1);
 	return (0);
 }
