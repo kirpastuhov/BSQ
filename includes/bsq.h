@@ -6,7 +6,7 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 10:28:49 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/30 21:34:05 by kpastukh         ###   ########.fr       */
+/*   Updated: 2019/07/31 20:24:55 by kpastukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ int		ft_error(int nbr);
 int		ft_getchar(char c);
 void	ft_get_input(void);
 char	*ft_read_file(char *filename);
+void	ft_zero_vars2(int *i, int *j);
+void	ft_zero_vars3(int *i, int *j, int *k);
+void	ft_fill_spaces(char *str, int col_counter, int row_counter, int cols);
 
 int		ft_atoi(char *str);
 

@@ -6,7 +6,7 @@
 /*   By: kpastukh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 16:11:10 by kpastukh          #+#    #+#             */
-/*   Updated: 2019/07/31 19:07:09 by moverton         ###   ########.fr       */
+/*   Updated: 2019/07/31 20:27:38 by kpastukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		g_rows;
 char	g_spce;
 char	g_obst;
 char	g_sqre;
+int		g_size;
+int		g_posn;
 
 void	get_config(char *input)
 {
@@ -63,8 +65,8 @@ int		main(int argc, char **argv)
 	int diag;
 	int abov;
 	int left;
-	int	size = 0;
-	int position = 0;
+	g_size = 0;
+	g_posn = 0;
 	int col_counter;
 	int row_counter;
 
@@ -76,9 +78,10 @@ int		main(int argc, char **argv)
 	start = g_strt;
 	while (test_str[start])
 	{
-		diag = 0;
-		abov = 0;
-		left = 0;
+		ft_zero_vars3(&abov, &diag, &left);
+		/* diag = 0; */
+		/* abov = 0; */
+		/* left = 0; */
 		if (test_str[start] == '\n')
 			start++;
 		if (j != 0)
@@ -93,17 +96,17 @@ int		main(int argc, char **argv)
 		{
 			test[i] = MIN3(left, abov, diag) + 1;
 			/* printf("test[i]: %d\n", test[i]); */
-			if (test[i] > size)
+			if (test[i] > g_size)
 			{
-				size = test[i];
-				position = start;
+				g_size = test[i];
+				g_posn = start;
 			}
 		}
 		if ((i / (j + 1) % cols) == 0 && i != 0)
 			j++;
 		i++;
 		start++;
-		/* printf("size: %d | position: %d\n", size, position); */
+		/* printf("g_size: %d | g_posn: %d\n", g_size, g_posn); */
 	}
 
 	/* i = 0; */
@@ -121,26 +124,30 @@ int		main(int argc, char **argv)
 	/* 	i++; */
 	/* } */
 
-	col_counter = size;
-	row_counter = size;
-	printf("position: %d, size: %d\n", position, size);
-	while (row_counter > 0)
-	{
-		/* printf("position: %d, rowcount: %d\n", position, row_counter); */
-		while (col_counter > 0)
-		{
-			/* printf("position: %d, colcount: %d\n", position, col_counter); */
-			test_str[position] = 'x';
-			position--;
-			col_counter--;
-		}
-		col_counter = size;
-		row_counter--;
-		position = (position + size - 1) - cols;
-	}
-
+	col_counter = g_size;
+	row_counter = g_size;
+	printf("g_posn: %d, g_size: %d\n", g_posn, g_size);
+	ft_fill_spaces(test_str, g_size, g_size, cols);
 	ft_putstr(test_str, 1);
 	write(1, "\n", 1);
-  
 	return (0);
 }
+
+
+void	ft_fill_spaces(char *str, int col_counter, int row_counter, int cols)
+{
+	while (row_counter > 0)
+	{
+		while (col_counter > 0)
+		{
+			str[g_posn] = 'x';
+			g_posn--;
+			col_counter--;
+		}
+		col_counter = g_size;
+		row_counter--;
+		g_posn = (g_posn + g_size - 1) - cols;
+	}
+}
+
+
